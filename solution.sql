@@ -37,7 +37,7 @@ SELECT emp_name FROM employees WHERE emp_name LIKE "H%";
 SELECT * FROM employees ORDER BY salary DESC LIMIT 3 ;
 
 --part e
-SELECT MAX(salary),department FROM employees GROUP BY department ;
+SELECT SUM(salary),department FROM employees GROUP BY department ;
 
 --part f
 SELECT SUM(salary),department FROM employees GROUP BY department WITH ROLLUP ;
