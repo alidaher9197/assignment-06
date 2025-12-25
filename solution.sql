@@ -89,3 +89,16 @@ end $$
 DELIMITER ;
 
 CALL GetEmployeesByDepartment("sales");
+
+--part n
+
+DELIMITER $$
+CREATE PROCEDURE GetEmployeesBySalary(IN salary_nb INT)
+BEGIN
+SELECT * 
+FROM employees 
+WHERE employees.salary>salary_nb;
+END $$
+DELIMITER ;
+
+CALL GetEmployeesBySalary(50000);
