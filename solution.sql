@@ -56,3 +56,36 @@ LEFT JOIN
 employees as t2
 ON
 t1.manager_id=t2.emp_id;
+
+--part i
+SELECT emp_name,salary FROM employees WHERE salary>(SELECT AVG(salary) FROM employees);
+
+--part j
+CREATE VIEW IT_Employees AS
+SELECT emp_name,department,salary 
+FROM employees 
+WHERE department="IT";
+
+--part k
+SELECT * FROM IT_Employees;
+
+--part l
+
+DELIMITER $$
+CREATE PROCEDURE GetAllEmployees()
+BEGIN
+SELECT * FROM employees;
+END $$
+DELIMITER ;
+
+CALL getAllEmployees();
+--part m
+
+DELIMITER $$
+CREATE PROCEDURE GetEmployeesByDepartment(IN department_name VARCHAR(70))
+BEGIN
+SELECT * FROM employees WHERE employees.department=department_name;
+end $$
+DELIMITER ;
+
+CALL GetEmployeesByDepartment("sales");
